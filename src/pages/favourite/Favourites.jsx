@@ -2,10 +2,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { Badge, Button, Col, Container, Row } from "react-bootstrap";
 import ProductCard from "./../../components/productCard/ProductCard";
 import { clearFav } from "../../store/slices/FavouriteSlice";
+import { useEffect } from "react";
 
 const Favourites = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.fav);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   if (data.length === 0) {
     return (

@@ -32,9 +32,8 @@ const ProductsHeader = ({ gridThree, handleGrid }) => {
           />
         </div>
         <div>
-          <select onChange={handlePriceChange}>
-            <option>
-              {/* selected="true" disabled="disabled" */}
+          <select defaultValue={"DEFAULT"} onChange={handlePriceChange}>
+            <option value="DEFAULT" disabled>
               Arrange By Price
             </option>
             <option value="lth">Price From Low To High</option>
