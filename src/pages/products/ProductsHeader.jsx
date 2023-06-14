@@ -1,5 +1,4 @@
-import { BiMenu } from "react-icons/bi";
-import { CgMenuGridO } from "react-icons/cg";
+import { BsJustify, BsFillGrid3X3GapFill } from "react-icons/bs";
 import "./productsheader.css";
 import { useDispatch } from "react-redux";
 import {
@@ -22,11 +21,11 @@ const ProductsHeader = ({ gridThree, handleGrid }) => {
     <div className="product-head bg-white mb-4 p-3 shadow">
       <div className="flex-between">
         <div>
-          <CgMenuGridO
+          <BsFillGrid3X3GapFill
             onClick={() => handleGrid(true)}
             className={gridThree ? "active" : ""}
           />
-          <BiMenu
+          <BsJustify
             onClick={() => handleGrid(false)}
             className={!gridThree ? "active" : ""}
           />
