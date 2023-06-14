@@ -1,0 +1,28 @@
+.slider .slider-img {
+  height: 350px;
+}
+.slider .slider-img img {
+  object-fit: cover;
+  border: 4px solid white;
+}
+.slider .slider-imgs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40px, 100px));
+  gap: 5px;
+  justify-content: center;
+}
+.slider .slider-imgs > div {
+  overflow: hidden;
+  height: 110px;
+  margin-top: 10px;
+}
+.slider .slider-imgs > div img {
+  cursor: pointer;
+  filter: grayscale(1);
+  -webkit-filter: grayscale(1);
+}
+.slider .slider-imgs > div.active img {
+  filter: grayscale(0);
+  -webkit-filter: grayscale(0);
+  border: 3px solid var(--blue-color);
+}

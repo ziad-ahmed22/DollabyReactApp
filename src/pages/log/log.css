@@ -1,0 +1,84 @@
+.login,
+.signup {
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login form,
+.signup form {
+  background-color: white;
+  width: 350px;
+  padding: 20px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.login form fieldset,
+.signup form fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.login form fieldset label,
+.signup form fieldset label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+.login form fieldset input,
+.signup form fieldset input {
+  background-color: #eeeeeecf;
+  outline: none;
+  border: 1px solid #dfdcdc;
+  padding: 5px;
+  caret-color: var(--blue-color);
+}
+.login form fieldset input:focus,
+.signup form fieldset input:focus {
+  border-bottom-color: var(--blue-color);
+}
+.login form .no-email,
+.signup form .no-email,
+.login form .have-email,
+.signup form .have-email {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+.login form .no-email a,
+.signup form .no-email a,
+.login form .have-email a,
+.signup form .have-email a {
+  text-decoration: underline !important;
+  color: var(--blue-color) !important;
+  font-weight: bold;
+}
+.login form .log-btn,
+.signup form .log-btn {
+  text-align: center;
+}
+.login form .log-btn button,
+.signup form .log-btn button {
+  outline: none;
+  border: none;
+  background-color: var(--blue-color);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 0;
+  /* display: none; */
+}
+/* .show {
+  display: block;
+} */

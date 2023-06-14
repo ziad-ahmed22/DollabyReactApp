@@ -1,0 +1,37 @@
+.cat-list {
+  max-height: 380px;
+  overflow-y: scroll;
+}
+.cat-list::-webkit-scrollbar {
+  width: 7px;
+}
+.cat-list::-webkit-scrollbar-track {
+  background-color: #eee;
+}
+.cat-list > div:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.105);
+}
+.cat-list > div {
+  transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
+}
+.cat-list > div label {
+  width: 100%;
+  cursor: pointer;
+  text-transform: capitalize;
+  padding: 0 10px;
+}
+.cat-list > div input {
+  appearance: none;
+}
+.cat-list > div:hover {
+  background-color: var(--blue-color);
+  color: white;
+}
+.cat-list > div.active {
+  background-color: var(--blue-color);
+  color: white;
+}

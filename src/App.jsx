@@ -1,0 +1,54 @@
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/home/Home";
+import Products from "./pages/products/Products";
+import Details from "./pages/details/Details";
+import Favourites from "./pages/favourite/Favourites";
+import Cart from "./pages/cart/Cart";
+import Login from "./pages/log/Login";
+import Signup from "./pages/log/Signup";
+import AsideCart from "./components/aside/AsideCart";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+import Preview from "./components/preview/Preview";
+import Protected from "./pages/log/Protected";
+import { ToastContainer } from "react-toastify";
+import Error from "./components/error/Error";
+
+function App() {
+  return (
+    <>
+      <Navbar />
+      <Preview />
+      <AsideCart />
+      <ToastContainer />
+      <Routes>
+        <Route path="/DollabyReactApp" element={<Home />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Details />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route
+          path="/favourites"
+          element={
+            <Protected>
+              <Favourites />
+            </Protected>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <Protected>
+              <Cart />
+            </Protected>
+          }
+        />
+        <Route path="*" element={<Error msg="Page Not Found" code={404} />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+}
+
+export default App;

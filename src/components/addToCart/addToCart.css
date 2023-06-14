@@ -1,0 +1,33 @@
+.add-to-cart .add-btn {
+  cursor: pointer;
+  padding: 7px;
+}
+.add-to-cart .inc,
+.add-to-cart .dec,
+.add-to-cart .num {
+  width: 25px;
+  height: 25px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
+}
+.add-to-cart .num {
+  border: 1px solid var(--blue-color);
+  cursor: unset;
+}
+.add-to-cart .remove {
+  cursor: pointer;
+  width: fit-content;
+  margin: auto;
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
+}

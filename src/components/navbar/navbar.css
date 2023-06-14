@@ -1,0 +1,53 @@
+.navbar .bill {
+  position: absolute;
+  top: 2px;
+  right: -5px;
+  background-color: black;
+  color: white;
+  height: 18px;
+  width: 18px;
+  font-size: 11px;
+}
+.navbar a {
+  color: black;
+}
+.navbar a:hover,
+.navbar a.active {
+  color: var(--blue-color) !important;
+}
+.navbar a .bill {
+  background-color: var(--blue-color);
+}
+.navbar .navbar-toggler:focus {
+  box-shadow: none !important;
+}
+.navbar .navbar-nav {
+  position: relative;
+}
+.navbar .profile-img > img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.navbar .profile-box {
+  background-color: white;
+  position: absolute;
+  z-index: 55555;
+  top: calc(100% + 10px);
+  right: 0;
+  padding: 10px;
+  display: none;
+}
+.navbar .profile-box.active {
+  display: block;
+}
+@media (max-width: 767px) {
+  .navbar .profile-box {
+    right: 50%;
+    translate: 50% 0;
+  }
+}

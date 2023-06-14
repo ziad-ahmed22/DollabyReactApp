@@ -1,0 +1,56 @@
+@keyframes load {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.load div {
+  position: absolute;
+  width: 24px;
+  height: 50px;
+  top: 60px;
+  animation: load 1.3157894736842106s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+.load div:nth-child(1) {
+  transform: translate(28.139999999999997px, 0);
+  background: #0051a2;
+  animation-delay: -0.7894736842105263s;
+}
+.load div:nth-child(2) {
+  transform: translate(68.33999999999999px, 0);
+  background: #1b75be;
+  animation-delay: -0.5263157894736842s;
+}
+.load div:nth-child(3) {
+  transform: translate(108.53999999999999px, 0);
+  background: #408ee0;
+  animation-delay: -0.2631578947368421s;
+}
+.load div:nth-child(4) {
+  transform: translate(148.73999999999998px, 0);
+  background: #0051a2;
+  animation-delay: -1.3157894736842106s;
+}
+.loading {
+  width: 201px;
+  height: 170px;
+  display: inline-block;
+  overflow: hidden;
+  background: transparent;
+}
+.load {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  backface-visibility: hidden;
+  transform-origin: 0 0; /* see note above */
+}
+.load div {
+  box-sizing: content-box;
+}

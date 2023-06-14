@@ -1,0 +1,23 @@
+.product-head svg {
+  background-color: #c5c1c1;
+  color: white;
+  cursor: pointer;
+  margin-right: 15px;
+  font-size: 33px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+.product-head svg:hover,
+.product-head svg.active {
+  background-color: var(--blue-color);
+}
+.product-head select {
+  width: 210px;
+  cursor: pointer;
+  padding: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.116);
+  outline: none;
+}
