@@ -24,7 +24,7 @@ const Signup = () => {
       userData.password === userData.passwordr
     ) {
       dispatch(signUp(userData));
-      navigate("/login");
+      navigate("/DollabyReactApp/login");
     }
   };
 
@@ -110,7 +110,7 @@ const Signup = () => {
         </fieldset>
 
         <div className="have-email">
-          Have Email ? <Link to="/login"> Login</Link>
+          Have Email ? <Link to="/DollabyReactApp/login"> Login</Link>
         </div>
 
         <div className="log-btn">

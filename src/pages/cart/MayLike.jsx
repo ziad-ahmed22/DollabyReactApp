@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAll } from "../../store/slices/categoriesSlice";
 import Loading from "../../components/loading/Loading";
@@ -39,7 +39,7 @@ const MayLike = () => {
       <h5 className="mb-3">You May Like</h5>
 
       {state.data.slice(randomNumer, randomNumer + 4).map((product) => (
-        <Link to={`/products/${product.id}`} key={product.id}>
+        <Link to={`/DollabyReactApp/products/${product.id}`} key={product.id}>
           <div className="box flex-between rounded mt-2">
             <div className="img">
               <img

@@ -28,7 +28,7 @@ const AddToCart = ({ product }) => {
       dispatch(increaseItemQuantity(product));
     } else {
       toast.info("You Must Login First");
-      navigate("/login");
+      // navigate("/DollabyReactApp/login");
     }
   };
 
@@ -37,7 +37,7 @@ const AddToCart = ({ product }) => {
       dispatch(decreaseItemQuantity(product.id));
     } else {
       toast.info("You Must Login First");
-      navigate("/login");
+      // navigate("/DollabyReactApp/login");
     }
   };
 
@@ -46,7 +46,7 @@ const AddToCart = ({ product }) => {
       dispatch(removeProduct(product.id));
     } else {
       toast.info("You Must Login First");
-      navigate("/login");
+      // navigate("/DollabyReactApp/login");
     }
   };
 

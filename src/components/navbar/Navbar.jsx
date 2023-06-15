@@ -1,5 +1,5 @@
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillHeartFill } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import "./navbar.css";
@@ -13,22 +13,24 @@ import { toast } from "react-toastify";
 
 const NavbarC = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { pathname: url } = useLocation();
   const { cartData } = useSelector((state) => state.cart);
   const { data: favData } = useSelector((state) => state.fav);
   const { data: userData, isAuthenticated } = useSelector(
     (state) => state.auth
   );
-  const [isActive, setIsActive] = useState(false);
-  const navigate = useNavigate();
+  const [isLogedIn, setIsLogedIn] = useState(false);
 
   const loginHandler = () => {
-    navigate("/login");
-    setIsActive(false);
+    navigate("/DollabyReactApp/login");
+    setIsLogedIn(false);
   };
+
   const logoutHandler = () => {
     dispatch(logOut());
-    navigate("/login");
-    setIsActive(false);
+    navigate("/DollabyReactApp/login");
+    setIsLogedIn(false);
   };
 
   return (
@@ -37,7 +39,7 @@ const NavbarC = () => {
         <Container>
           <Navbar.Brand
             as={Link}
-            to="/"
+            to="/DollabyReactApp"
             className="text-blue fw-bold fs-3 text-uppercase"
           >
             Dollapy
@@ -46,27 +48,41 @@ const NavbarC = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="ms-auto my-2 my-md-0 fw-bold gap-3 align-items-center text-center">
-              <Nav.Link as={NavLink} to="/">
+              <Nav.Link
+                as={Link}
+                to="/DollabyReactApp"
+                className={url === "/DollabyReactApp" ? "active" : ""}
+              >
                 Home
               </Nav.Link>
 
-              <Nav.Link as={NavLink} to="/products">
+              <Nav.Link
+                as={Link}
+                to="/DollabyReactApp/products"
+                className={url === "/DollabyReactApp/products" ? "active" : ""}
+              >
                 Shop
               </Nav.Link>
 
               {!isAuthenticated && (
-                <Nav.Link as={NavLink} to="/login">
+                <Nav.Link
+                  as={Link}
+                  to="/DollabyReactApp/login"
+                  className={url === "/DollabyReactApp/login" ? "active" : ""}
+                >
                   Login
                 </Nav.Link>
               )}
 
               <Nav.Link
-                className="position-relative fs-5"
-                as={NavLink}
-                to="/favourites"
-                onClick={() =>
-                  !isAuthenticated && toast.info("You Must Login First")
-                }
+                as={Link}
+                to="/DollabyReactApp/favourites"
+                className={`position-relative fs-5 ${
+                  url === "/DollabyReactApp/favourites" ? "active" : ""
+                }`}
+                onClick={() => {
+                  !isAuthenticated && toast.info("You Must Login First");
+                }}
               >
                 <BsFillHeartFill />
                 <span className="flex-center rounded-circle bill">
@@ -75,10 +91,12 @@ const NavbarC = () => {
               </Nav.Link>
 
               <Nav.Link
-                className="position-relative fs-5"
-                // as={NavLink}
-                // to="/cart"
-                onClick={() => dispatch(openCart())}
+                className={`position-relative fs-5 ${
+                  url === "/DollabyReactApp/cart" ? "active" : ""
+                }`}
+                onClick={() => {
+                  dispatch(openCart());
+                }}
               >
                 <FaShoppingCart />
                 <span className="flex-center rounded-circle bill">
@@ -90,11 +108,12 @@ const NavbarC = () => {
                 <img
                   src={isAuthenticated ? profileAvatar : profileImage}
                   alt="image"
-                  onClick={() => setIsActive(!isActive)}
+                  onClick={() => setIsLogedIn(!isLogedIn)}
                 />
               </Nav.Link>
 
-              <div className={`profile-box ${isActive ? "active" : ""}`}>
+              {/* Avatar */}
+              <div className={`profile-box ${isLogedIn ? "active" : ""}`}>
                 {isAuthenticated ? (
                   <>
                     <h6 className="mb-3">Welcome {userData.username}</h6>

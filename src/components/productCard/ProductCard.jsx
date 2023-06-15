@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
       </div>
 
       <div className="body px-2 py-3">
-        <Link to={`/products/${product.id}`}>
+        <Link to={`/DollabyReactApp/products/${product.id}`}>
           <h6 className="mb-3">
             {product.title.length > 20
               ? product.title.slice(0, 20) + "..."
@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
         </a>
 
         <Link
-          to={`/products/${product.id}`}
+          to={`/DollabyReactApp/products/${product.id}`}
           data-tooltip-id={product.id}
           data-tooltip-content="Details"
           data-tooltip-place="left"

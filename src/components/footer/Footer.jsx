@@ -30,7 +30,10 @@ const Footer = () => {
       <Container>
         <Row xs={1} sm={2} md={3} lg={4} xl={5}>
           <Col className="mb-5">
-            <Link to="/" className="text-blue fw-bold fs-3 text-uppercase">
+            <Link
+              to="/DollabyReactApp"
+              className="text-blue fw-bold fs-3 text-uppercase"
+            >
               Dollapy
             </Link>
             <p className="mt-3 mb-4">

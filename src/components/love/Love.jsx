@@ -22,7 +22,7 @@ const Love = (props) => {
       dispatch(toggleFav(product));
     } else {
       toast.info("You Must Login First");
-      navigate("/login");
+      // navigate("/DollabyReactApp/login");
     }
   };
 
