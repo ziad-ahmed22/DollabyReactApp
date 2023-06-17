@@ -50,8 +50,8 @@ const NavbarC = () => {
             <Nav className="ms-auto my-2 my-md-0 fw-bold gap-3 align-items-center text-center">
               <Nav.Link
                 as={Link}
-                to="/DollabyReactApp"
-                className={url === "/DollabyReactApp" ? "active" : ""}
+                to="/DollabyReactApp/"
+                className={url === "/DollabyReactApp/" ? "active" : ""}
               >
                 Home
               </Nav.Link>
