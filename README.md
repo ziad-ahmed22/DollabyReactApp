@@ -12,5 +12,5 @@
   <li>Adding a product to the cart and showing it on the aside and the cart page</li>
 </ul>
 
-</hr>
+<hr/>
 <a href="https://ziad-ahmed22.github.io/DollabyReactApp/" target="_blank">Live View</a>
