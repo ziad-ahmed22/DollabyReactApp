@@ -13,4 +13,4 @@
 </ul>
 
 </hr>
-<a href="https://ziad-ahmed22.github.io/DollabyReactApp/">Live View</a>a>
+<a href="https://ziad-ahmed22.github.io/DollabyReactApp/">Live View</a>
