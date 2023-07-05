@@ -6,7 +6,7 @@ const Protected = ({ children }) => {
   if (isAuthenticated) {
     return children;
   } else {
-    return <Navigate to="/DollabyReactApp/login" />;
+    return <Navigate to="/login" />;
   }
 };
 

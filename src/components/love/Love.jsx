@@ -4,6 +4,7 @@ import { toggleFav } from "../../store/slices/FavouriteSlice";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Tooltip } from "react-tooltip";
 
 const Love = (props) => {
   const { product } = props;
@@ -22,15 +23,23 @@ const Love = (props) => {
       dispatch(toggleFav(product));
     } else {
       toast.info("You Must Login First");
-      // navigate("/DollabyReactApp/login");
+      // navigate("/login");
     }
   };
 
   return (
-    <BsFillSuitHeartFill
-      onClick={addToFavHandler}
-      className={isActive ? "active" : ""}
-    />
+    <>
+      <Tooltip id={product.id} className="bg-blue " />
+      <BsFillSuitHeartFill
+        onClick={addToFavHandler}
+        className={isActive ? "active" : ""}
+        data-tooltip-id={product.id}
+        data-tooltip-content={
+          isActive ? "Remove From Fav List" : "Add To Fav List"
+        }
+        data-tooltip-place="left"
+      />
+    </>
   );
 };
 

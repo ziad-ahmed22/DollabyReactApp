@@ -39,7 +39,7 @@ const MayLike = () => {
       <h5 className="mb-3">You May Like</h5>
 
       {state.data.slice(randomNumer, randomNumer + 4).map((product) => (
-        <Link to={`/DollabyReactApp/products/${product.id}`} key={product.id}>
+        <Link to={`/products/${product.id}`} key={product.id}>
           <div className="box flex-between rounded mt-2">
             <div className="img">
               <img

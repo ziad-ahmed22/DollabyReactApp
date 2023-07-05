@@ -26,11 +26,11 @@ const AsideCart = () => {
 
   const viewCartHandler = () => {
     if (isAuthenticated) {
-      navigate("/DollabyReactApp/cart");
+      navigate("/cart");
       dispatch(closeCart());
     } else {
       dispatch(closeCart());
-      navigate("/DollabyReactApp/cart");
+      navigate("/cart");
       toast.info("You Must Login First");
     }
   };
@@ -40,7 +40,7 @@ const AsideCart = () => {
       dispatch(removeProduct(id));
     } else {
       toast.info("You Must Login First");
-      // navigate("/DollabyReactApp/login");
+      // navigate("/login");
     }
   };
 
@@ -60,7 +60,7 @@ const AsideCart = () => {
           <img src={img} alt="empty cart img" className="w-100 mb-3" />
           <Button
             as={Link}
-            to="/DollabyReactApp/products"
+            to="/products"
             variant="primary"
             className="text-white fw-bold"
             onClick={() => dispatch(closeCart())}
@@ -77,7 +77,7 @@ const AsideCart = () => {
             </span>
             <Button
               // as={Link}
-              // to="/DollabyReactApp/cart"
+              // to="/cart"
               size="sm"
               variant="primary"
               className="text-white fw-bold"
@@ -94,7 +94,7 @@ const AsideCart = () => {
               style={{ border: "1px solid #c7c6c638" }}
             >
               <Link
-                to={`/DollabyReactApp/products/${product.id}`}
+                to={`/products/${product.id}`}
                 onClick={() => dispatch(closeCart())}
               >
                 <div className="img" style={{ height: "90px", width: "90px" }}>
@@ -109,7 +109,7 @@ const AsideCart = () => {
               <div className="info ms-2" style={{ flex: "1" }}>
                 <div className="flex-between mb-3">
                   <Link
-                    to={`/DollabyReactApp/products/${product.id}`}
+                    to={`/products/${product.id}`}
                     onClick={() => dispatch(closeCart())}
                   >
                     <h6 className="mb-0">{product.title}</h6>

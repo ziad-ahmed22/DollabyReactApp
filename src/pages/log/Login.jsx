@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     if (username === state.data.username && password === state.data.password) {
       dispatch(logIn());
-      navigate("/DollabyReactApp", "replace");
+      navigate("/", "replace");
     } else {
       toast.error("wrong username or password", {
         position: "top-center",
@@ -62,7 +62,7 @@ const Login = () => {
         </fieldset>
 
         <div className="no-email">
-          Don't Have Email ? <Link to="/DollabyReactApp/signup"> Signup</Link>
+          Don't Have Email ? <Link to="/signup"> Signup</Link>
         </div>
 
         <div className="log-btn">

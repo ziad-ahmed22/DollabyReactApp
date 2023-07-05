@@ -22,13 +22,13 @@ function App() {
       <AsideCart />
       <ToastContainer />
       <Routes>
-        <Route path="/DollabyReactApp" element={<Home />} />
-        <Route path="/DollabyReactApp/products" element={<Products />} />
-        <Route path="/DollabyReactApp/products/:id" element={<Details />} />
-        <Route path="/DollabyReactApp/login" element={<Login />} />
-        <Route path="/DollabyReactApp/signup" element={<Signup />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<Details />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
         <Route
-          path="/DollabyReactApp/favourites"
+          path="/favourites"
           element={
             <Protected>
               <Favourites />
@@ -36,17 +36,14 @@ function App() {
           }
         />
         <Route
-          path="/DollabyReactApp/cart"
+          path="/cart"
           element={
             <Protected>
               <Cart />
             </Protected>
           }
         />
-        <Route
-          path="/DollabyReactApp/*"
-          element={<Error msg="Page Not Found" code={404} />}
-        />
+        <Route path="/*" element={<Error msg="Page Not Found" code={404} />} />
       </Routes>
       <Footer />
     </>

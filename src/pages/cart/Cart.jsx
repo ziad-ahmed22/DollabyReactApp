@@ -46,7 +46,7 @@ const Cart = () => {
           </div>
           <Button
             as={Link}
-            to="/DollabyReactApp/products"
+            to="/products"
             variant="primary"
             className="text-white fw-bold"
           >
@@ -84,7 +84,7 @@ const Cart = () => {
                       <td>
                         <div className="img">
                           <Link
-                            to={`/DollabyReactApp/products/${product.id}`}
+                            to={`/products/${product.id}`}
                             onClick={() => dispatch(closeCart())}
                           >
                             <img

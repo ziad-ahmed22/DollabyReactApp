@@ -33,7 +33,7 @@ const MainSlider = () => {
             >
               {slides.map((s, i) => (
                 <SwiperSlide key={i}>
-                  <Link to="/DollabyReactApp/products">
+                  <Link to="/products">
                     <img className="w-100 h-100" src={s} alt={i} />
                   </Link>
                 </SwiperSlide>
@@ -45,7 +45,7 @@ const MainSlider = () => {
             <Row xs={2} md={4} lg={2}>
               {images.map((img, i) => (
                 <Col key={i} className="mb-3">
-                  <Link to="/DollabyReactApp/products">
+                  <Link to="/products">
                     <div className="img shadow">
                       <img className="w-100 h-100" src={img} alt={i} />
                     </div>

@@ -23,13 +23,13 @@ const NavbarC = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
 
   const loginHandler = () => {
-    navigate("/DollabyReactApp/login");
+    navigate("/login");
     setIsLogedIn(false);
   };
 
   const logoutHandler = () => {
     dispatch(logOut());
-    navigate("/DollabyReactApp/login");
+    navigate("/login");
     setIsLogedIn(false);
   };
 
@@ -39,7 +39,7 @@ const NavbarC = () => {
         <Container>
           <Navbar.Brand
             as={Link}
-            to="/DollabyReactApp"
+            to="/"
             className="text-blue fw-bold fs-3 text-uppercase"
           >
             Dollapy
@@ -50,16 +50,16 @@ const NavbarC = () => {
             <Nav className="ms-auto my-2 my-md-0 fw-bold gap-3 align-items-center text-center">
               <Nav.Link
                 as={Link}
-                to="/DollabyReactApp/"
-                className={url === "/DollabyReactApp/" ? "active" : ""}
+                to="/"
+                className={url === "/" ? "active" : ""}
               >
                 Home
               </Nav.Link>
 
               <Nav.Link
                 as={Link}
-                to="/DollabyReactApp/products"
-                className={url === "/DollabyReactApp/products" ? "active" : ""}
+                to="/products"
+                className={url === "/products" ? "active" : ""}
               >
                 Shop
               </Nav.Link>
@@ -67,8 +67,8 @@ const NavbarC = () => {
               {!isAuthenticated && (
                 <Nav.Link
                   as={Link}
-                  to="/DollabyReactApp/login"
-                  className={url === "/DollabyReactApp/login" ? "active" : ""}
+                  to="/login"
+                  className={url === "/login" ? "active" : ""}
                 >
                   Login
                 </Nav.Link>
@@ -76,9 +76,9 @@ const NavbarC = () => {
 
               <Nav.Link
                 as={Link}
-                to="/DollabyReactApp/favourites"
+                to="/favourites"
                 className={`position-relative fs-5 ${
-                  url === "/DollabyReactApp/favourites" ? "active" : ""
+                  url === "/favourites" ? "active" : ""
                 }`}
                 onClick={() => {
                   !isAuthenticated && toast.info("You Must Login First");
@@ -92,7 +92,7 @@ const NavbarC = () => {
 
               <Nav.Link
                 className={`position-relative fs-5 ${
-                  url === "/DollabyReactApp/cart" ? "active" : ""
+                  url === "/cart" ? "active" : ""
                 }`}
                 onClick={() => {
                   dispatch(openCart());
