@@ -13,6 +13,7 @@ import Protected from "./pages/log/Protected";
 import { ToastContainer } from "react-toastify";
 import Error from "./components/error/Error";
 import AsideCart from "./components/aside/AsideCart";
+import RequireBack from "./pages/log/RequireBack";
 
 function App() {
   return (
@@ -25,9 +26,18 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         <Route path="/products/:id" element={<Details />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route
+
+        <Route element={<RequireBack />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+
+        <Route element={<Protected />}>
+          <Route path="/favourites" element={<Favourites />} />
+          <Route path="/cart" element={<Cart />} />
+        </Route>
+
+        {/* <Route
           path="/favourites"
           element={
             <Protected>
@@ -42,7 +52,7 @@ function App() {
               <Cart />
             </Protected>
           }
-        />
+        /> */}
         <Route path="/*" element={<Error msg="Page Not Found" code={404} />} />
       </Routes>
       <Footer />

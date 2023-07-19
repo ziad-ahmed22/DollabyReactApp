@@ -62,7 +62,7 @@ const Login = () => {
         </fieldset>
 
         <div className="no-email">
-          Don't Have Email ? <Link to="/signup"> Signup</Link>
+          Do not Have Email ? <Link to="/signup"> Signup</Link>
         </div>
 
         <div className="log-btn">

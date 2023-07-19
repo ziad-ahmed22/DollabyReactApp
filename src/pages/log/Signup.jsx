@@ -3,6 +3,7 @@ import "./log.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../../store/slices/auth";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const Signup = () => {
     ) {
       dispatch(signUp(userData));
       navigate("/login");
+      toast.success("Registered Successfully", {
+        position: "top-center",
+      });
     }
   };
 
@@ -105,7 +109,7 @@ const Signup = () => {
             }
           />
           {userData.password !== userData.passwordr && show && (
-            <p className="error">Passowrd Doesn't Matches!</p>
+            <p className="error">Passowrd Does not Matches!</p>
           )}
         </fieldset>
 
