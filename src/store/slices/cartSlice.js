@@ -23,7 +23,10 @@ const cartSlice = createSlice({
       if (productIncart) {
         state.cartData = state.cartData.map((product) => {
           if (product.id === action.payload.id) {
-            const quantity = product.quantity + 1;
+            const quantity =
+              product.quantity < product.stock
+                ? product.quantity + 1
+                : product.quantity;
             const totalPrice = quantity * product.priceAfterDiscount;
             return { ...product, quantity, totalPrice };
           } else {

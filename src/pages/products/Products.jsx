@@ -1,6 +1,4 @@
 import { Col, Container, Row } from "react-bootstrap";
-import Footer from "../../components/footer/Footer";
-import Navbar from "../../components/navbar/Navbar";
 import CatList from "./CatList";
 import "./products.css";
 import { useDispatch, useSelector } from "react-redux";
