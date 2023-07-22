@@ -72,8 +72,8 @@ const MayLike = () => {
   );
 };
 
-const shouldComponentUpdate = (prevData, nextData) => {
-  return prevData.data === nextData.data;
+const equalProps = (prevProps, neaxtProps) => {
+  return prevProps.data === neaxtProps.data;
 };
 
-export default React.memo(MayLike, shouldComponentUpdate);
+export default React.memo(MayLike, equalProps);

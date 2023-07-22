@@ -6,7 +6,7 @@ import {
   priceLowToHigh,
 } from "../../store/slices/categoriesSlice";
 
-const ProductsHeader = ({ gridThree, handleGrid }) => {
+const ProductsHeader = ({ gridFour, handleGrid }) => {
   const dispatch = useDispatch();
 
   const handlePriceChange = (e) => {
@@ -23,11 +23,11 @@ const ProductsHeader = ({ gridThree, handleGrid }) => {
         <div>
           <BsFillGrid3X3GapFill
             onClick={() => handleGrid(true)}
-            className={gridThree ? "active" : ""}
+            className={gridFour ? "active" : ""}
           />
           <BsJustify
             onClick={() => handleGrid(false)}
-            className={!gridThree ? "active" : ""}
+            className={!gridFour ? "active" : ""}
           />
         </div>
         <div>

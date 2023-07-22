@@ -17,7 +17,6 @@ const initialState = {
   data: {},
   error: "",
   isOpen: false,
-  id: 0,
 };
 
 const previewSlice = createSlice({

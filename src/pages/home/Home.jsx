@@ -18,10 +18,10 @@ const Home = () => {
   }, []);
 
   const loadMore = () => {
-    end < state.data.length ? setEnd((prev) => prev + 10) : null;
+    end < state.data.length && setEnd((prev) => prev + 10);
   };
   const loadLess = () => {
-    end > 20 ? setEnd((prev) => prev - 10) : null;
+    end > 20 && setEnd((prev) => prev - 10);
   };
 
   if (state.loading)

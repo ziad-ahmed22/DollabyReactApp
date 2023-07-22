@@ -20,17 +20,17 @@ const NavbarC = () => {
   const { data: userData, isAuthenticated } = useSelector(
     (state) => state.auth
   );
-  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [logBox, setLogBox] = useState(false);
 
   const loginHandler = () => {
     navigate("/login");
-    setIsLogedIn(false);
+    setLogBox(false);
   };
 
   const logoutHandler = () => {
     dispatch(logOut());
     navigate("/login");
-    setIsLogedIn(false);
+    setLogBox(false);
   };
 
   return (
@@ -108,12 +108,12 @@ const NavbarC = () => {
                 <img
                   src={isAuthenticated ? profileAvatar : profileImage}
                   alt="image"
-                  onClick={() => setIsLogedIn(!isLogedIn)}
+                  onClick={() => setLogBox(!logBox)}
                 />
               </Nav.Link>
 
               {/* Avatar */}
-              <div className={`profile-box ${isLogedIn ? "active" : ""}`}>
+              <div className={`profile-box ${logBox ? "active" : ""}`}>
                 {isAuthenticated ? (
                   <>
                     <h6 className="mb-3">Welcome {userData.username}</h6>

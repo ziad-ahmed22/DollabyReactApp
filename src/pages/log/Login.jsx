@@ -17,7 +17,7 @@ const Login = () => {
     e.preventDefault();
     if (username === state.data.username && password === state.data.password) {
       dispatch(logIn());
-      navigate("/", "replace");
+      navigate("/", { replace: true });
     } else {
       toast.error("wrong username or password", {
         position: "top-center",

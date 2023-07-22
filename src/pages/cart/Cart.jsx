@@ -1,29 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./cart.css";
 import { useEffect } from "react";
-import {
-  clearCart,
-  closeCart,
-  decreaseItemQuantity,
-  getCartPrice,
-  getCartQuantity,
-  increaseItemQuantity,
-  removeProduct,
-} from "../../store/slices/cartSlice";
+import { clearCart } from "../../store/slices/cartSlice";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { formatPrice } from "./../../utils/formatCurrency";
 import img from "./empty-cart.png";
 import MayLike from "./MayLike";
+import TableRow from "./TableRow";
+import PriceBox from "./PriceBox";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart);
-
-  useEffect(() => {
-    dispatch(getCartPrice());
-    dispatch(getCartQuantity());
-  }, [state]);
 
   const goToTop = () => {
     window.scrollTo({
@@ -79,59 +67,8 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.cartData.map((product) => (
-                    <tr key={product.id} className="text-center">
-                      <td>
-                        <div className="img">
-                          <Link
-                            to={`/products/${product.id}`}
-                            onClick={() => dispatch(closeCart())}
-                          >
-                            <img
-                              src={product.thumbnail}
-                              alt={product.title}
-                              className="w-100 h-100"
-                            />
-                          </Link>
-                        </div>
-                      </td>
-
-                      <td>{product.title}</td>
-                      <td>{formatPrice(product.priceAfterDiscount)}</td>
-
-                      <td>
-                        <span
-                          onClick={() =>
-                            dispatch(decreaseItemQuantity(product.id))
-                          }
-                          className="inc"
-                        >
-                          -
-                        </span>
-                        <span className="num mx-2 d-inline-block">
-                          {product.quantity}
-                        </span>
-                        <span
-                          onClick={() =>
-                            dispatch(increaseItemQuantity(product))
-                          }
-                          className="dec"
-                        >
-                          +
-                        </span>
-                      </td>
-
-                      <td>{formatPrice(product.totalPrice)}</td>
-                      <td>
-                        <span
-                          onClick={() => dispatch(removeProduct(product.id))}
-                          className="bg-danger rounded text-white p-1 fs-14"
-                          style={{ cursor: "pointer" }}
-                        >
-                          Remove
-                        </span>
-                      </td>
-                    </tr>
+                  {state.cartData.map((product, i) => (
+                    <TableRow product={product} key={i} />
                   ))}
                 </tbody>
 
@@ -155,24 +92,7 @@ const Cart = () => {
           </Col>
 
           <Col className="col-sm-12 col-lg-3">
-            <div className="checkout bg-white shadow rounded mb-3 p-2 fs-18 fw-bold">
-              <div className="flex-between py-2 mb-2">
-                Items:
-                <span className="text-blue">{state.cartData.length}</span>
-              </div>
-
-              <div className="flex-between py-2 mb-2">
-                Total Quantity:
-                <span className="text-blue">{state.cartQuantity}</span>
-              </div>
-
-              <div className="flex-between py-2">
-                Total Price:
-                <span className="text-blue">
-                  {formatPrice(state.cartPrice)}
-                </span>
-              </div>
-            </div>
+            <PriceBox state={state} />
             <MayLike />
           </Col>
         </Row>

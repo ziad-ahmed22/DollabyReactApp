@@ -1,9 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Navigation } from "swiper";
+import { Navigation, Autoplay } from "swiper";
 import "swiper/css/navigation";
-import { Autoplay } from "swiper";
 import "./mainslider.css";
 import s1 from "./images/s1.jpg";
 import s2 from "./images/s2.jpg";
@@ -12,7 +12,6 @@ import i1 from "./images/i3.jpg";
 import i2 from "./images/i4.jpg";
 import i3 from "./images/i2.jpg";
 import i4 from "./images/i1.jpg";
-import { Link } from "react-router-dom";
 
 const MainSlider = () => {
   const slides = [s1, s2, s3];

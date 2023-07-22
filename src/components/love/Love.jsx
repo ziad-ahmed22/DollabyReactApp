@@ -18,7 +18,7 @@ const Love = (props) => {
     setIsActive(state.data.find((item) => item.id === product.id));
   }, [state]);
 
-  const addToFavHandler = () => {
+  const favHandler = () => {
     if (isAuthenticated) {
       dispatch(toggleFav(product));
     } else {
@@ -31,7 +31,7 @@ const Love = (props) => {
     <>
       <Tooltip id={product.id} className="bg-blue " />
       <BsFillSuitHeartFill
-        onClick={addToFavHandler}
+        onClick={favHandler}
         className={isActive ? "active" : ""}
         data-tooltip-id={product.id}
         data-tooltip-content={

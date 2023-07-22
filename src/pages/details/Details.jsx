@@ -75,7 +75,6 @@ const Details = () => {
 
               <div className="foot flex-between mb-4">
                 <AddToCart product={product} />
-
                 <Love product={product} />
               </div>
             </div>

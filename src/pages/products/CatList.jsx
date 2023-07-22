@@ -26,7 +26,7 @@ const CatList = () => {
   return (
     <div className="cat-list d-flex flex-column bg-white mb-4 p-2">
       <div
-        className={activeCat === 0 ? "active w-100 py-2" : "w-100 py-2"}
+        className={`w-100 py-2 ${activeCat === 0 ? "active" : ""}`}
         onClick={handleAllClick}
       >
         <label htmlFor="all">
@@ -37,9 +37,7 @@ const CatList = () => {
 
       {state.data.map((catItem, index) => (
         <div
-          className={
-            activeCat === index + 1 ? "active w-100 py-2" : "w-100 py-2"
-          }
+          className={` w-100 py-2 ${activeCat === index + 1 ? "active" : ""}`}
           key={index}
           data-val={catItem}
           onClick={(e) => handleCatClick(e, index)}

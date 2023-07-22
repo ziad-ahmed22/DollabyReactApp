@@ -12,15 +12,13 @@ import { fetchAll } from "../../store/slices/categoriesSlice";
 const Products = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.categories);
-  const [gridThree, setGridThree] = useState(true);
+  const [gridFour, setGridFour] = useState(true);
 
   useEffect(() => {
     dispatch(fetchAll());
   }, []);
 
-  const handleGrid = (status) => {
-    setGridThree(status);
-  };
+  const handleGrid = (status) => setGridFour(status);
 
   return (
     <Container className="pt-4 pb-5">
@@ -30,19 +28,19 @@ const Products = () => {
         </Col>
 
         <Col className="col-12 col-md-8 col-lg-9">
-          <ProductsHeader gridThree={gridThree} handleGrid={handleGrid} />
+          <ProductsHeader gridFour={gridFour} handleGrid={handleGrid} />
 
           {state.loading && <Loading />}
 
-          <div className={gridThree ? "product-grid-4" : "product-grid-1"}>
-            {!state.loading && !state.error && state.data.length ? (
-              state.data.map((product) => (
+          {!state.loading && !state.error && state.data.length ? (
+            <div className={gridFour ? "product-grid-4" : "product-grid-1"}>
+              {state.data.map((product) => (
                 <ProductCard key={product.id} product={product} />
-              ))
-            ) : (
-              <Error msg={state.error} />
-            )}
-          </div>
+              ))}
+            </div>
+          ) : (
+            <Error msg={state.error} />
+          )}
         </Col>
       </Row>
     </Container>
