@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./log.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { logIn } from "../../store/slices/auth";
 import { toast } from "react-toastify";
@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const to = location.state?.from?.pathname || "/";
   const dispatch = useDispatch();
   const state = useSelector((st) => st.auth);
   const [username, setUsername] = useState("");
@@ -17,7 +19,7 @@ const Login = () => {
     e.preventDefault();
     if (username === state.data.username && password === state.data.password) {
       dispatch(logIn());
-      navigate("/", { replace: true });
+      navigate(to, { replace: true });
     } else {
       toast.error("wrong username or password", {
         position: "top-center",
