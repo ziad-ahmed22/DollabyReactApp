@@ -72,8 +72,4 @@ const MayLike = () => {
   );
 };
 
-const equalProps = (prevProps, neaxtProps) => {
-  return prevProps.data === neaxtProps.data;
-};
-
-export default React.memo(MayLike, equalProps);
+export default React.memo(MayLike);
