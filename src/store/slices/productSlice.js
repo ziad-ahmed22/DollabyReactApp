@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { PRODUCT_DETAILS_URL } from "../../utils/urls";
+import { api } from "../../api/Axios";
 import { priceDiscount } from "../../utils/priceDiscount";
 import { rating } from "../../utils/rating";
 
 export const fetchProduct = createAsyncThunk(
   "productSlice/fetchProduct",
   async (id) => {
-    const res = await axios.get(`${PRODUCT_DETAILS_URL}/${id}`);
+    const res = await api.get(`/products/${id}`);
     return res.data;
   }
 );

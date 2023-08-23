@@ -1,20 +1,19 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { ALL_PRODUCTS_URL, CAT_URL } from "../../utils/urls";
 import { priceDiscount } from "../../utils/priceDiscount";
 import { rating } from "../../utils/rating";
+import { api } from "./../../api/Axios";
 
 export const fetchCategories = createAsyncThunk(
   "categoriesSlice/fetchCategories",
   async (cat) => {
-    const res = await axios.get(`${CAT_URL}/${cat}`);
+    const res = await api.get(`/products/category/${cat}`);
     return res.data.products;
   }
 );
 export const fetchAll = createAsyncThunk(
   "categoriesSlice/fetchAll",
   async () => {
-    const res = await axios.get(ALL_PRODUCTS_URL);
+    const res = await api.get("/products?limit=100");
     return res.data.products;
   }
 );

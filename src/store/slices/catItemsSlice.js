@@ -1,11 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
-import { CAT_ITEMS_URL } from "../../utils/urls";
+import { api } from "./../../api/Axios";
 
 export const fetchCatItems = createAsyncThunk(
   "catItemsSlice/fetchCatItems",
   async () => {
-    const res = await axios.get(CAT_ITEMS_URL);
+    const res = await api.get("/products/categories");
     return res.data;
   }
 );
