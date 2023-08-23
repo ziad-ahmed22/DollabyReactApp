@@ -11,6 +11,7 @@ import { fetchProduct } from "../../store/slices/productSlice";
 import { formatPrice } from "../../utils/formatCurrency";
 import AddToCart from "../../components/addToCart/AddToCart";
 import { BsStarFill } from "react-icons/bs";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 const Details = () => {
   const { id } = useParams();
@@ -23,10 +24,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(fetchProduct(id));
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    scrollToTop();
   }, [id]);
 
   const starsArr = [];

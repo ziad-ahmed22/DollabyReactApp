@@ -3,17 +3,13 @@ import { Badge, Button, Col, Container, Row } from "react-bootstrap";
 import ProductCard from "./../../components/productCard/ProductCard";
 import { clearFav } from "../../store/slices/FavouriteSlice";
 import { useEffect } from "react";
+import { scrollToTop } from "./../../utils/scrollToTop";
 
 const Favourites = () => {
   const dispatch = useDispatch();
   const { data } = useSelector((state) => state.fav);
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }, []);
+  useEffect(() => scrollToTop(), []);
 
   return (
     <div className="fav p-4">

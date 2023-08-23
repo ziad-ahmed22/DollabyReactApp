@@ -8,19 +8,13 @@ import img from "./empty-cart.png";
 import MayLike from "./MayLike";
 import TableRow from "./TableRow";
 import PriceBox from "./PriceBox";
+import { scrollToTop } from "./../../utils/scrollToTop";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.cart);
 
-  const goToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
-  useEffect(() => goToTop(), []);
+  useEffect(() => scrollToTop(), []);
 
   if (state.cartData.length === 0) {
     return (
@@ -79,7 +73,7 @@ const Cart = () => {
                         variant="danger px-5 mt-3"
                         onClick={() => {
                           dispatch(clearCart());
-                          goToTop();
+                          scrollToTop();
                         }}
                       >
                         Clear Cart

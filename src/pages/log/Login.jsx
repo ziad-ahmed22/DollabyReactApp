@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { logIn } from "../../store/slices/auth";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { scrollToTop } from "./../../utils/scrollToTop";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -27,9 +28,7 @@ const Login = () => {
     }
   };
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
+  useEffect(() => scrollToTop(), []);
 
   return (
     <div className="login">
