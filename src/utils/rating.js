@@ -1,3 +1,4 @@
+// use rating function to make a number of stars to each product
 export const rating = (num) => {
   if (num >= 4 && num < 4.25) {
     return 2;
