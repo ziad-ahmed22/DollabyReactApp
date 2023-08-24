@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAll } from "../../store/slices/categoriesSlice";
 import Loading from "../../components/loading/Loading";
 import Error from "../../components/error/Error";
 import { formatPrice } from "../../utils/formatCurrency";
 import { Link } from "react-router-dom";
 import "./maylike.css";
-import { useMyStore } from "../../hooks/useMyStore";
 
 const MayLike = () => {
   const dispatch = useDispatch();
-  const { categories } = useMyStore();
+  const categories = useSelector((state) => state.categories);
   const randomNumer = Math.floor(Math.random() * (categories.data.length - 5));
 
   useEffect(() => {
