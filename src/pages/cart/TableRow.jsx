@@ -1,7 +1,6 @@
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {
-  closeCart,
   decreaseItemQuantity,
   increaseItemQuantity,
   removeProduct,
@@ -15,10 +14,7 @@ const TableRow = ({ product }) => {
     <tr className="text-center">
       <td>
         <div className="img">
-          <Link
-            to={`/products/${product.id}`}
-            onClick={() => dispatch(closeCart())}
-          >
+          <Link to={`/products/${product.id}`}>
             <img
               src={product.thumbnail}
               alt={product.title}

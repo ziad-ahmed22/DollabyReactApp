@@ -3,13 +3,12 @@ import "./cart.css";
 import { useEffect } from "react";
 import { clearCart } from "../../store/slices/cartSlice";
 import { Button, Col, Container, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import img from "./empty-cart.png";
 import MayLike from "./MayLike";
 import TableRow from "./TableRow";
 import PriceBox from "./PriceBox";
 import { scrollToTop } from "./../../utils/scrollToTop";
 import { useMyStore } from "../../hooks/useMyStore";
+import EmptyCart from "./EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -17,28 +16,7 @@ const Cart = () => {
 
   useEffect(() => scrollToTop(), []);
 
-  if (cart.cartData.length === 0) {
-    return (
-      <Container>
-        <div className="my-4 bg-white p-3 fw-bold fs-4 rounded shadow text-center text-blue text-uppercase">
-          Shooping Cart
-        </div>
-        <div className="py-5 d-flex flex-column align-items-center">
-          <div className="mb-3 text-center">
-            <img src={img} alt="empty cart img" className="w-75" />
-          </div>
-          <Button
-            as={Link}
-            to="/products"
-            variant="primary"
-            className="text-white fw-bold"
-          >
-            Go To Shop
-          </Button>
-        </div>
-      </Container>
-    );
-  }
+  if (cart.cartData.length === 0) return <EmptyCart />;
 
   return (
     <Container>
