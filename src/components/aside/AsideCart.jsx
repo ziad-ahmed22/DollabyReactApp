@@ -1,5 +1,5 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   closeCart,
   getCartPrice,
@@ -13,20 +13,20 @@ import { useEffect } from "react";
 import img from "./empty-cart.png";
 import { toast } from "react-toastify";
 import AsideCartBox from "./AsideCartBox";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const AsideCart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { cart, auth } = useMyStore();
 
   useEffect(() => {
     dispatch(getCartPrice());
     dispatch(getCartQuantity());
-  }, [state]);
+  }, [cart]);
 
   const viewCartHandler = () => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       navigate("/cart");
       dispatch(closeCart());
     } else {
@@ -37,18 +37,17 @@ const AsideCart = () => {
   };
 
   const removeItemHandler = (id) => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       dispatch(removeProduct(id));
     } else {
       toast.info("You Must Login First");
-      // navigate("/login");
     }
   };
 
   return (
     <Offcanvas
       placement="end"
-      show={state.isCartOpen}
+      show={cart.isCartOpen}
       onHide={() => dispatch(closeCart())}
       className="aside-cart"
     >
@@ -56,7 +55,7 @@ const AsideCart = () => {
         <Offcanvas.Title className="fs-4">Shooping Cart</Offcanvas.Title>
       </Offcanvas.Header>
 
-      {state.cartData.length === 0 ? (
+      {cart.cartData.length === 0 ? (
         <div className="text-center mt-5">
           <img src={img} alt="empty cart img" className="w-100 mb-3" />
           <Button
@@ -73,8 +72,8 @@ const AsideCart = () => {
         <Offcanvas.Body>
           <div className="head flex-between mb-3">
             <span className="bg-info rounded text-white px-1 fw-bold">
-              {state.cartData.length}
-              {state.cartData.length === 1 ? " Item" : " Items"}
+              {cart.cartData.length}
+              {cart.cartData.length === 1 ? " Item" : " Items"}
             </span>
             <Button
               size="sm"
@@ -86,7 +85,7 @@ const AsideCart = () => {
             </Button>
           </div>
 
-          {state.cartData.map((product) => (
+          {cart.cartData.map((product) => (
             <AsideCartBox
               product={product}
               key={product.id}
@@ -97,12 +96,12 @@ const AsideCart = () => {
           <div className="foot flex-between fw-bold fs-18 mt-4">
             <p>
               Total Quantity:
-              <span className="text-blue ms-2">{state.cartQuantity}</span>
+              <span className="text-blue ms-2">{cart.cartQuantity}</span>
             </p>
             <p>
               Total Price:
               <span className="text-blue ms-2">
-                {formatPrice(state.cartPrice)}
+                {formatPrice(cart.cartPrice)}
               </span>
             </p>
           </div>

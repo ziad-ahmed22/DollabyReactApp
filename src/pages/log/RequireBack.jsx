@@ -1,10 +1,10 @@
-import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const RequireBack = () => {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { auth } = useMyStore();
 
-  if (isAuthenticated) {
+  if (auth.isAuthenticated) {
     window.history.back();
   } else {
     return <Outlet />;

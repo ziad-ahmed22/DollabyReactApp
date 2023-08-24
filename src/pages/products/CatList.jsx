@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import "./catlist.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { fetchCatItems } from "./../../store/slices/catItemsSlice";
 import { fetchAll, fetchCategories } from "../../store/slices/categoriesSlice";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const CatList = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.catItems);
+  const { catItems } = useMyStore();
   const [activeCat, setActiveCat] = useState(0);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const CatList = () => {
         </label>
       </div>
 
-      {state.data.map((catItem, index) => (
+      {catItems.data.map((catItem, index) => (
         <div
           className={` w-100 py-2 ${activeCat === index + 1 ? "active" : ""}`}
           key={index}

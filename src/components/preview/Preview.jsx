@@ -1,6 +1,6 @@
 import { Col, Modal, Row } from "react-bootstrap";
 import "./preview.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import DetailsSlide from "../../pages/details/DetailsSlide";
 import { formatPrice } from "../../utils/formatCurrency";
 import AddToCart from "../addToCart/AddToCart";
@@ -9,26 +9,27 @@ import { closePreview } from "../../store/slices/previewSlice";
 import Loading from "./../loading/Loading";
 import Error from "./../error/Error";
 import { BsStarFill } from "react-icons/bs";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const Preview = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.preview);
+  const { preview } = useMyStore();
 
   return (
     <Modal
-      show={state.isOpen}
+      show={preview.isOpen}
       onHide={() => dispatch(closePreview())}
       size="xl"
       centered
     >
       <Modal.Header closeButton></Modal.Header>
 
-      {state.loading ? (
+      {preview.loading ? (
         <Loading />
-      ) : state.error ? (
-        <Error msg={state.error} />
+      ) : preview.error ? (
+        <Error msg={preview.error} />
       ) : (
-        <ModalBody product={state.data} />
+        <ModalBody product={preview.data} />
       )}
     </Modal>
   );

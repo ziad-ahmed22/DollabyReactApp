@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import "./detailsslide.css";
 
 const DetailsSlide = ({ product }) => {
+  const { images, thumbnail, title } = product;
   const bigImg = useRef();
-  const [isActive, setIsActive] = useState(product.images.length - 1);
+  const [isActive, setIsActive] = useState(images?.length - 1);
 
   return (
     <div className="slider w-100 h-100 mb-4">
@@ -12,13 +13,13 @@ const DetailsSlide = ({ product }) => {
           ref={bigImg}
           style={{ height: "300px" }}
           className="w-100 h-100 rounded"
-          src={product.thumbnail}
-          alt={product.title}
+          src={thumbnail}
+          alt={title}
         />
       </div>
 
       <div className="slider-imgs">
-        {product.images.map((img, i) => (
+        {images.map((img, i) => (
           <div
             key={i}
             onClick={() => setIsActive(i)}
@@ -27,7 +28,7 @@ const DetailsSlide = ({ product }) => {
             <img
               onClick={() => (bigImg.current.src = img)}
               src={img}
-              alt={product.title}
+              alt={title}
               className="w-100 h-100 rounded"
             />
           </div>

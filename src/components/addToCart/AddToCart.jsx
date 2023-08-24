@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./addToCart.css";
 import { useEffect } from "react";
 import {
@@ -8,45 +8,40 @@ import {
   removeProduct,
 } from "../../store/slices/cartSlice";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const AddToCart = ({ product }) => {
   const dispatch = useDispatch();
-  const { cartData } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const { cart, auth } = useMyStore();
 
-  const productInCart = cartData.find((item) => item.id === product.id);
+  const productInCart = cart.cartData.find((item) => item.id === product.id);
   const quantity = productInCart ? productInCart.quantity : 0;
 
   useEffect(() => {
     dispatch(getProductQuantity(product.id));
-  }, [cartData]);
+  }, [cart.cartData]);
 
   const increaseItemHandler = () => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       dispatch(increaseItemQuantity(product));
     } else {
       toast.info("You Must Login First");
-      // navigate("/login");
     }
   };
 
   const decreaseItemHandler = () => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       dispatch(decreaseItemQuantity(product.id));
     } else {
       toast.info("You Must Login First");
-      // navigate("/login");
     }
   };
 
   const removeItemHandler = () => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       dispatch(removeProduct(product.id));
     } else {
       toast.info("You Must Login First");
-      // navigate("/login");
     }
   };
 

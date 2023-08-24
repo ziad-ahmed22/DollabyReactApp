@@ -1,29 +1,25 @@
 import { BsFillSuitHeartFill } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { toggleFav } from "../../store/slices/FavouriteSlice";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Tooltip } from "react-tooltip";
+import { useMyStore } from "../../hooks/useMyStore";
 
-const Love = (props) => {
-  const { product } = props;
+const Love = ({ product }) => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.fav);
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
+  const { auth, fav } = useMyStore();
   const [isActive, setIsActive] = useState(false);
 
   useEffect(() => {
-    setIsActive(state.data.find((item) => item.id === product.id));
-  }, [state]);
+    setIsActive(fav.data.find((item) => item.id === product.id));
+  }, [fav]);
 
   const favHandler = () => {
-    if (isAuthenticated) {
+    if (auth.isAuthenticated) {
       dispatch(toggleFav(product));
     } else {
       toast.info("You Must Login First");
-      // navigate("/login");
     }
   };
 

@@ -3,23 +3,22 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BsFillHeartFill } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
 import "./navbar.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { openCart } from "../../store/slices/cartSlice";
 import profileImage from "./profile.jpg";
 import profileAvatar from "./profileAcatar.jpg";
 import { useState } from "react";
 import { logOut } from "../../store/slices/auth";
 import { toast } from "react-toastify";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const NavbarC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname: url } = useLocation();
-  const { cartData } = useSelector((state) => state.cart);
-  const { data: favData } = useSelector((state) => state.fav);
-  const { data: userData, isAuthenticated } = useSelector(
-    (state) => state.auth
-  );
+  const { auth, fav, cart } = useMyStore();
+  const { data: userData, isAuthenticated } = auth;
+  const { data: favData } = fav;
   const [logBox, setLogBox] = useState(false);
 
   const loginHandler = () => {
@@ -100,7 +99,7 @@ const NavbarC = () => {
               >
                 <FaShoppingCart />
                 <span className="flex-center rounded-circle bill">
-                  {cartData.length}
+                  {cart.cartData.length}
                 </span>
               </Nav.Link>
 

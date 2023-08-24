@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./cart.css";
 import { useEffect } from "react";
 import { clearCart } from "../../store/slices/cartSlice";
@@ -9,14 +9,15 @@ import MayLike from "./MayLike";
 import TableRow from "./TableRow";
 import PriceBox from "./PriceBox";
 import { scrollToTop } from "./../../utils/scrollToTop";
+import { useMyStore } from "../../hooks/useMyStore";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.cart);
+  const { cart } = useMyStore();
 
   useEffect(() => scrollToTop(), []);
 
-  if (state.cartData.length === 0) {
+  if (cart.cartData.length === 0) {
     return (
       <Container>
         <div className="my-4 bg-white p-3 fw-bold fs-4 rounded shadow text-center text-blue text-uppercase">
@@ -61,7 +62,7 @@ const Cart = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {state.cartData.map((product, i) => (
+                  {cart.cartData.map((product, i) => (
                     <TableRow product={product} key={i} />
                   ))}
                 </tbody>
@@ -86,7 +87,7 @@ const Cart = () => {
           </Col>
 
           <Col className="col-sm-12 col-lg-3">
-            <PriceBox state={state} />
+            <PriceBox cart={cart} />
             <MayLike />
           </Col>
         </Row>
