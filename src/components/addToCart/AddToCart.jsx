@@ -19,7 +19,7 @@ const AddToCart = ({ product }) => {
 
   useEffect(() => {
     dispatch(getProductQuantity(product.id));
-  }, [cart.cartData]);
+  }, [dispatch, product.id]);
 
   const increaseItemHandler = () => {
     if (auth.isAuthenticated) {

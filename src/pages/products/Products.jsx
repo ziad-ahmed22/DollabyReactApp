@@ -17,7 +17,7 @@ const Products = () => {
 
   useEffect(() => {
     dispatch(fetchAll());
-  }, []);
+  }, [dispatch]);
 
   const handleGrid = (status) => setGridFour(status);
 

@@ -14,7 +14,7 @@ const MayLike = () => {
 
   useEffect(() => {
     dispatch(fetchAll());
-  }, []);
+  }, [dispatch]);
 
   if (categories.loading) {
     return (

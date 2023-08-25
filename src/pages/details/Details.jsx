@@ -22,7 +22,7 @@ const Details = () => {
   useEffect(() => {
     dispatch(fetchProduct(id));
     scrollToTop();
-  }, [id]);
+  }, [dispatch, id]);
 
   const starsArr = [];
   for (let i = 0; i < product.ratingStars; i++) {

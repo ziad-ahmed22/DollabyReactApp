@@ -12,7 +12,7 @@ const CatList = () => {
 
   useEffect(() => {
     dispatch(fetchCatItems());
-  }, []);
+  }, [dispatch]);
 
   const handleAllClick = () => {
     dispatch(fetchAll());

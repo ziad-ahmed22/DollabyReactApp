@@ -23,7 +23,7 @@ const AsideCart = () => {
   useEffect(() => {
     dispatch(getCartPrice());
     dispatch(getCartQuantity());
-  }, [cart]);
+  }, [dispatch, cart]);
 
   const viewCartHandler = () => {
     if (auth.isAuthenticated) {

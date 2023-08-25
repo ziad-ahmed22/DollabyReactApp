@@ -16,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(fetchAll());
-  }, []);
+  }, [dispatch]);
 
   const loadMore = () => {
     end < categories.data.length && setEnd((prev) => prev + 10);
