@@ -6,9 +6,11 @@ import cartReducer from "./slices/cartSlice";
 import auth from "./slices/auth";
 import previewReducer from "./slices/previewSlice";
 import FavouriteReducer from "./slices/FavouriteSlice";
+import AllProductSliceReducer from "./slices/AllProductSlice";
 
 export const store = configureStore({
   reducer: {
+    allProducts: AllProductSliceReducer,
     categories: categoriesReducer,
     catItems: catItemsReducer,
     product: productReducer,

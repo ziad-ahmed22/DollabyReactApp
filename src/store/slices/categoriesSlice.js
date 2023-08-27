@@ -10,8 +10,8 @@ export const fetchCategories = createAsyncThunk(
     return res.data.products;
   }
 );
-export const fetchAll = createAsyncThunk(
-  "categoriesSlice/fetchAll",
+export const fetchAllCategories = createAsyncThunk(
+  "categoriesSlice/fetchAllCategories",
   async () => {
     const res = await api.get("/products?limit=100");
     return res.data.products;
@@ -61,10 +61,10 @@ const categoriesSlice = createSlice({
       state.error = action.error.message;
     });
 
-    builder.addCase(fetchAll.pending, (state) => {
+    builder.addCase(fetchAllCategories.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchAll.fulfilled, (state, action) => {
+    builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload.map((product) => {
         const priceAfterDiscount = priceDiscount(
@@ -75,7 +75,7 @@ const categoriesSlice = createSlice({
         return { ...product, priceAfterDiscount, ratingStars };
       });
     });
-    builder.addCase(fetchAll.rejected, (state, action) => {
+    builder.addCase(fetchAllCategories.rejected, (state, action) => {
       state.loading = false;
       state.data = [];
       state.error = action.error.message;

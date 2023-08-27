@@ -6,48 +6,48 @@ import { Container } from "react-bootstrap";
 import "./home.css";
 import Loading from "./../../components/loading/Loading";
 import Error from "./../../components/error/Error";
-import { fetchAll } from "../../store/slices/categoriesSlice";
 import { useMyStore } from "./../../hooks/useMyStore";
+import { fetchAllProducts } from "../../store/slices/allProductSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const { categories } = useMyStore();
+  const { allProducts } = useMyStore();
   const [end, setEnd] = useState(20);
 
   useEffect(() => {
-    dispatch(fetchAll());
+    dispatch(fetchAllProducts());
   }, [dispatch]);
 
   const loadMore = () => {
-    end < categories.data.length && setEnd((prev) => prev + 10);
+    end < allProducts.data.length && setEnd((prev) => prev + 10);
   };
   const loadLess = () => {
     end > 20 && setEnd((prev) => prev - 10);
   };
 
-  if (categories.loading)
+  if (allProducts.loading)
     return (
       <>
         <MainSlider /> <Loading />
       </>
     );
 
-  if (categories.error)
+  if (allProducts.error)
     return (
       <>
-        <MainSlider /> <Error msg={categories.error} />
+        <MainSlider /> <Error msg={allProducts.error} />
       </>
     );
 
   return (
     <>
       <MainSlider />
-      {categories.data.length && (
+      {allProducts.data.length && (
         <div className="all-products">
           <Container>
             <h2 className="title position-relative mb-5">All Products</h2>
             <div className="grid-4 mb-5">
-              {categories.data.slice(0, end).map((product) => (
+              {allProducts.data.slice(0, end).map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
@@ -61,7 +61,7 @@ const Home = () => {
               </span>
               <span
                 className={`more-btn ${
-                  end >= categories.data.length ? "disabled" : ""
+                  end >= allProducts.data.length ? "disabled" : ""
                 }`}
                 onClick={loadMore}
               >

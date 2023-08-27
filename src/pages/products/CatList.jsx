@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import "./catlist.css";
 import { useDispatch } from "react-redux";
 import { fetchCatItems } from "./../../store/slices/catItemsSlice";
-import { fetchAll, fetchCategories } from "../../store/slices/categoriesSlice";
+import {
+  fetchAllCategories,
+  fetchCategories,
+} from "../../store/slices/categoriesSlice";
 import { useMyStore } from "../../hooks/useMyStore";
 
 const CatList = () => {
@@ -15,7 +18,7 @@ const CatList = () => {
   }, [dispatch]);
 
   const handleAllClick = () => {
-    dispatch(fetchAll());
+    dispatch(fetchAllCategories());
     setActiveCat(0);
   };
 

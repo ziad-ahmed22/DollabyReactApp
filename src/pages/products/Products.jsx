@@ -7,7 +7,7 @@ import ProductCard from "../../components/productCard/ProductCard";
 import Error from "../../components/error/Error";
 import { useEffect, useState } from "react";
 import ProductsHeader from "./ProductsHeader";
-import { fetchAll } from "../../store/slices/categoriesSlice";
+import { fetchAllCategories } from "../../store/slices/categoriesSlice";
 import { useMyStore } from "../../hooks/useMyStore";
 
 const Products = () => {
@@ -16,7 +16,7 @@ const Products = () => {
   const [gridFour, setGridFour] = useState(true);
 
   useEffect(() => {
-    dispatch(fetchAll());
+    dispatch(fetchAllCategories());
   }, [dispatch]);
 
   const handleGrid = (status) => setGridFour(status);

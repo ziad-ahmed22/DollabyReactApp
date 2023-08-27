@@ -17,6 +17,9 @@
       background-color: rgba(0, 0, 0, 0.735);
       color: white;
     }
+    & tr:not(:last-child) {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+    }
     .inc,
     .dec {
       background-color: rgba(0, 0, 0, 0.735);
@@ -32,10 +35,7 @@
       }
     }
     & tfoot {
-      border-top: 1px solid rgba(0, 0, 0, 0.146);
+      border-top: 1px solid rgba(0, 0, 0, 0.233);
     }
   }
-}
-.checkout > div:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.11);
 }
