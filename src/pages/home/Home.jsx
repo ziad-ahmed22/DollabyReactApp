@@ -42,7 +42,7 @@ const Home = () => {
   return (
     <>
       <MainSlider />
-      {allProducts.data.length && (
+      {allProducts?.data?.length && (
         <div className="all-products">
           <Container>
             <h2 className="title position-relative mb-5">All Products</h2>
