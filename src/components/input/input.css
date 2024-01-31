@@ -1,0 +1,20 @@
+.input-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.input-field label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+.input-field input {
+  background-color: #eeeeeecf;
+  outline: none;
+  border: 1px solid #dfdcdc;
+  padding: 5px;
+  caret-color: var(--blue-color);
+}
+.input-field input:focus {
+  border-bottom-color: var(--blue-color);
+}

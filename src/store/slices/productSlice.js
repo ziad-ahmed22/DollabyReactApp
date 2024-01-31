@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { api } from "../../api/Axios";
 import { priceDiscount } from "../../utils/priceDiscount";
 import { rating } from "../../utils/rating";
+import { api } from "../../api/Axios";
 
 export const fetchProduct = createAsyncThunk(
   "productSlice/fetchProduct",
@@ -24,6 +24,7 @@ const productSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchProduct.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
 
     builder.addCase(fetchProduct.fulfilled, (state, action) => {

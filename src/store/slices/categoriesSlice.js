@@ -10,6 +10,7 @@ export const fetchCategories = createAsyncThunk(
     return res.data.products;
   }
 );
+
 export const fetchAllCategories = createAsyncThunk(
   "categoriesSlice/fetchAllCategories",
   async () => {
@@ -33,6 +34,7 @@ const categoriesSlice = createSlice({
         (x, y) => x.priceAfterDiscount - y.priceAfterDiscount
       );
     },
+
     priceHighToLow: (state) => {
       state.data = state.data.sort(
         (x, y) => y.priceAfterDiscount - x.priceAfterDiscount
@@ -43,7 +45,9 @@ const categoriesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCategories.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
+
     builder.addCase(fetchCategories.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload.map((product) => {
@@ -55,6 +59,7 @@ const categoriesSlice = createSlice({
         return { ...product, priceAfterDiscount, ratingStars };
       });
     });
+
     builder.addCase(fetchCategories.rejected, (state, action) => {
       state.loading = false;
       state.data = [];
@@ -63,7 +68,9 @@ const categoriesSlice = createSlice({
 
     builder.addCase(fetchAllCategories.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
+
     builder.addCase(fetchAllCategories.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload.map((product) => {
@@ -75,6 +82,7 @@ const categoriesSlice = createSlice({
         return { ...product, priceAfterDiscount, ratingStars };
       });
     });
+
     builder.addCase(fetchAllCategories.rejected, (state, action) => {
       state.loading = false;
       state.data = [];

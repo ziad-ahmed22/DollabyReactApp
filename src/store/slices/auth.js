@@ -21,11 +21,13 @@ const auth = createSlice({
     signUp: (state, action) => {
       state.data = action.payload;
     },
+
     logIn: (state) => {
       state.isAuthenticated = true;
       localStorage.setItem("auth", "true");
       localStorage.setItem("username", state.data.username);
     },
+
     logOut: (state) => {
       state.isAuthenticated = false;
       localStorage.removeItem("auth");
