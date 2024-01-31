@@ -25,6 +25,7 @@ const previewSlice = createSlice({
     openPreview: (state) => {
       state.isOpen = true;
     },
+
     closePreview: (state) => {
       state.isOpen = false;
     },
@@ -33,6 +34,7 @@ const previewSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchModalProduct.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
 
     builder.addCase(fetchModalProduct.fulfilled, (state, action) => {

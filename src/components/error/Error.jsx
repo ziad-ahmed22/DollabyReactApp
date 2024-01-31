@@ -1,12 +1,12 @@
 import { Container } from "react-bootstrap";
-import img from "./404.png";
+import error404 from "../../assets/images/404.png";
 
 const Error = ({ msg, code }) => {
   return (
     <Container className="text-center my-5">
       {code === 404 && (
         <img
-          src={img}
+          src={error404}
           alt="error img"
           style={{ width: "50%", height: "60vh" }}
         />

@@ -1,8 +1,10 @@
-import { useDispatch } from "react-redux";
 import { Badge, Button, Col, Container, Row } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 import ProductCard from "./../../components/productCard/ProductCard";
 import { clearFav } from "../../store/slices/FavouriteSlice";
-import { useEffect } from "react";
+import PageTitle from "../../components/pageTitle/PageTitle";
 import { scrollToTop } from "./../../utils/scrollToTop";
 import { useMyStore } from "../../hooks/useMyStore";
 
@@ -15,9 +17,7 @@ const Favourites = () => {
   return (
     <div className="fav p-4">
       <Container>
-        <div className="my-4 bg-white p-3 fw-bold fs-4 rounded shadow text-center text-blue text-uppercase">
-          Favourite List
-        </div>
+        <PageTitle title="Favourite List" />
 
         {fav.data.length === 0 ? (
           <p className="text-center fs-3 p-5">No Product In List</p>
@@ -27,6 +27,7 @@ const Favourites = () => {
               <Badge className="py-2 px-3">
                 {fav.data.length} Item{fav.data.length !== 1 && "s"}
               </Badge>
+
               <Button
                 variant="danger"
                 size="sm"

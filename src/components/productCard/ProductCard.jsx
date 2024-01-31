@@ -1,15 +1,17 @@
-import { BsEyeFill, BsLink45Deg, BsStarFill } from "react-icons/bs";
-import "./productCard.css";
+import { BsEyeFill, BsLink45Deg } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import Love from "../love/Love";
-import { formatPrice } from "./../../utils/formatCurrency";
-import AddToCart from "../addToCart/AddToCart";
-import { useDispatch } from "react-redux";
+
 import {
   fetchModalProduct,
   openPreview,
 } from "../../store/slices/previewSlice";
+import { formatPrice } from "./../../utils/formatCurrency";
+import StarsRating from "../starsRating/StarsRating";
+import AddToCart from "../addToCart/AddToCart";
+import Love from "../love/Love";
+import "./productCard.css";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -19,11 +21,6 @@ const ProductCard = ({ product }) => {
     dispatch(openPreview());
   };
 
-  const starsArr = [];
-  for (let i = 0; i < product.ratingStars; i++) {
-    starsArr.push(<BsStarFill key={i} />);
-  }
-
   return (
     <div className="card-p bg-white position-relative shadow overflow-hidden">
       <div className="img overflow-hidden position-relative ">
@@ -31,16 +28,12 @@ const ProductCard = ({ product }) => {
           <img src={product.thumbnail} alt={product.title} />
         )}
 
-        <div className="stars">{starsArr}</div>
+        <StarsRating rating={product.ratingStars} />
       </div>
 
       <div className="body px-2 py-3">
         <Link to={`/products/${product.id}`}>
-          <h6 className="mb-3">
-            {product.title.length > 20
-              ? product.title.slice(0, 20) + "..."
-              : product.title}
-          </h6>
+          <h6 className="mb-3 trim-text">{product.title}</h6>
         </Link>
 
         <div className="flex-between mb-3 fs-14 fw-bold">

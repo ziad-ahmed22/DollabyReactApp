@@ -1,5 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
 import { priceDiscount } from "./../../utils/priceDiscount";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cartData: localStorage.getItem("cart")

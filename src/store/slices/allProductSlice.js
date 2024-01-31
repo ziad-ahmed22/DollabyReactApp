@@ -23,7 +23,9 @@ const allProductSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchAllProducts.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
+
     builder.addCase(fetchAllProducts.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload.map((product) => {
@@ -35,6 +37,7 @@ const allProductSlice = createSlice({
         return { ...product, priceAfterDiscount, ratingStars };
       });
     });
+
     builder.addCase(fetchAllProducts.rejected, (state, action) => {
       state.loading = false;
       state.data = [];

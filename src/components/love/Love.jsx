@@ -1,9 +1,10 @@
 import { BsFillSuitHeartFill } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-import { toggleFav } from "../../store/slices/FavouriteSlice";
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 import { Tooltip } from "react-tooltip";
+import { toast } from "react-toastify";
+
+import { toggleFav } from "../../store/slices/FavouriteSlice";
 import { useMyStore } from "../../hooks/useMyStore";
 
 const Love = ({ product }) => {
@@ -13,7 +14,7 @@ const Love = ({ product }) => {
 
   useEffect(() => {
     setIsActive(fav.data.find((item) => item.id === product.id));
-  }, [fav]);
+  }, [fav, product]);
 
   const favHandler = () => {
     if (auth.isAuthenticated) {

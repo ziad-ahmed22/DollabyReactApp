@@ -1,0 +1,37 @@
+:is(.login, .signup) {
+  height: 90vh;
+}
+:is(.login, .signup) form {
+  background-color: white;
+  width: 370px;
+  max-width: 100%;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 5px;
+}
+:is(.login, .signup) form :is(.no-email, .have-email) {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+:is(.login, .signup) form :is(.no-email, .have-email) a {
+  text-decoration: underline !important;
+  color: var(--blue-color) !important;
+  font-weight: bold;
+}
+:is(.login, .signup) form .log-btn {
+  text-align: center;
+}
+:is(.login, .signup) form .log-btn button {
+  outline: none;
+  border: none;
+  background-color: var(--blue-color);
+  color: white;
+  padding: 5px 15px;
+  border-radius: 3px;
+}
+.error {
+  color: red;
+  font-size: 13px;
+  margin-bottom: 0;
+}

@@ -1,14 +1,15 @@
 import { useDispatch } from "react-redux";
-import "./addToCart.css";
+import { toast } from "react-toastify";
 import { useEffect } from "react";
+
 import {
   decreaseItemQuantity,
   getProductQuantity,
   increaseItemQuantity,
   removeProduct,
 } from "../../store/slices/cartSlice";
-import { toast } from "react-toastify";
 import { useMyStore } from "../../hooks/useMyStore";
+import "./addToCart.css";
 
 const AddToCart = ({ product }) => {
   const dispatch = useDispatch();

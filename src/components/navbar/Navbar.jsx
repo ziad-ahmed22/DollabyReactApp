@@ -1,16 +1,18 @@
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { BsFillHeartFill } from "react-icons/bs";
 import { FaShoppingCart } from "react-icons/fa";
-import "./navbar.css";
 import { useDispatch } from "react-redux";
-import { openCart } from "../../store/slices/cartSlice";
-import profileImage from "./profile.jpg";
-import profileAvatar from "./profileAcatar.jpg";
-import { useState } from "react";
-import { logOut } from "../../store/slices/auth";
 import { toast } from "react-toastify";
+import { useState } from "react";
+
+import profileAvatar from "../../assets/images/profileAvatar.jpg";
+import profileImage from "../../assets/images/profile.jpg";
+
+import { openCart } from "../../store/slices/cartSlice";
 import { useMyStore } from "../../hooks/useMyStore";
+import { logOut } from "../../store/slices/auth";
+import "./navbar.css";
 
 const NavbarC = () => {
   const dispatch = useDispatch();
@@ -45,6 +47,7 @@ const NavbarC = () => {
           </Navbar.Brand>
 
           <Navbar.Toggle aria-controls="navbarScroll" />
+
           <Navbar.Collapse id="navbarScroll">
             <Nav className="ms-auto my-2 my-md-0 fw-bold gap-3 align-items-center text-center">
               <Nav.Link
@@ -93,9 +96,7 @@ const NavbarC = () => {
                 className={`position-relative fs-5 ${
                   url === "/cart" ? "active" : ""
                 }`}
-                onClick={() => {
-                  dispatch(openCart());
-                }}
+                onClick={() => dispatch(openCart())}
               >
                 <FaShoppingCart />
                 <span className="flex-center rounded-circle bill">
@@ -121,16 +122,9 @@ const NavbarC = () => {
                     </Button>
                   </>
                 ) : (
-                  <>
-                    <h6 className="mb-3">Welcome Yasta</h6>
-                    <Button
-                      size="sm"
-                      className="bg-blue"
-                      onClick={loginHandler}
-                    >
-                      Login
-                    </Button>
-                  </>
+                  <Button size="sm" className="bg-blue" onClick={loginHandler}>
+                    Login
+                  </Button>
                 )}
               </div>
             </Nav>

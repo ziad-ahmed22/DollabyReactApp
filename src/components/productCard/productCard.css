@@ -27,10 +27,8 @@
   background-color: rgba(0, 0, 0, 0.655);
   padding: 3px;
 }
-.card-p .stars > svg {
+.stars > svg {
   color: rgb(255, 255, 0);
-  margin: 0 3px;
-  font-size: 15px;
 }
 
 .card-p .over {

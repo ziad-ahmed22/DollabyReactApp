@@ -1,0 +1,5 @@
+.stars > svg {
+  color: rgb(203, 203, 0);
+  margin: 0 3px;
+  font-size: 15px;
+}

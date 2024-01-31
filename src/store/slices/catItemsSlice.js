@@ -22,11 +22,14 @@ const catItemsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchCatItems.pending, (state) => {
       state.loading = true;
+      state.error = "";
     });
+
     builder.addCase(fetchCatItems.fulfilled, (state, action) => {
       state.loading = false;
       state.data = action.payload;
     });
+
     builder.addCase(fetchCatItems.rejected, (state, action) => {
       state.loading = false;
       state.data = [];
