@@ -1,7 +1,8 @@
-import { Modal } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import { Modal } from "react-bootstrap";
 
 import { ProductDetails } from "../productDetails/ProductDetails";
+import { useGetProductQuery } from "../../store/apis/productApi";
 import { closePreview } from "../../store/slices/previewSlice";
 import { useMyStore } from "../../hooks/useMyStore";
 import Loading from "./../loading/Loading";
@@ -11,6 +12,9 @@ import "./preview.css";
 const Preview = () => {
   const dispatch = useDispatch();
   const { preview } = useMyStore();
+  const { data, isError, error, isLoading } = useGetProductQuery(
+    preview.productId
+  );
 
   return (
     <Modal
@@ -21,13 +25,13 @@ const Preview = () => {
     >
       <Modal.Header closeButton></Modal.Header>
 
-      {preview.loading ? (
+      {isLoading ? (
         <Loading />
-      ) : preview.error ? (
-        <Error msg={preview.error} />
+      ) : isError ? (
+        <Error error={error} />
       ) : (
         <Modal.Body>
-          <ProductDetails product={preview.data} />
+          <ProductDetails product={data} />
         </Modal.Body>
       )}
     </Modal>

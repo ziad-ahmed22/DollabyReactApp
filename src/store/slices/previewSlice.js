@@ -1,57 +1,23 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { priceDiscount } from "../../utils/priceDiscount";
-import { rating } from "../../utils/rating";
-import { api } from "./../../api/Axios";
-
-export const fetchModalProduct = createAsyncThunk(
-  "previewSlice/fetchModalProduct",
-  async (id) => {
-    const res = await api.get(`/products/${id}`);
-    return res.data;
-  }
-);
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading: false,
-  data: {},
-  error: "",
   isOpen: false,
+  productId: null,
 };
 
 const previewSlice = createSlice({
   name: "previewSlice",
   initialState,
   reducers: {
-    openPreview: (state) => {
+    openPreview: (state, action) => {
       state.isOpen = true;
+      state.productId = action.payload;
     },
 
     closePreview: (state) => {
       state.isOpen = false;
+      // state.productId = null;
     },
-  },
-
-  extraReducers: (builder) => {
-    builder.addCase(fetchModalProduct.pending, (state) => {
-      state.loading = true;
-      state.error = "";
-    });
-
-    builder.addCase(fetchModalProduct.fulfilled, (state, action) => {
-      state.loading = false;
-      const priceAfterDiscount = priceDiscount(
-        action.payload.price,
-        action.payload.discountPercentage
-      );
-      const ratingStars = rating(action.payload.rating);
-      state.data = { ...action.payload, priceAfterDiscount, ratingStars };
-    });
-
-    builder.addCase(fetchModalProduct.rejected, (state, action) => {
-      state.loading = false;
-      state.data = [];
-      state.error = action.error.message;
-    });
   },
 });
 

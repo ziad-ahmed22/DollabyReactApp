@@ -1,20 +1,17 @@
 import { BsJustify, BsFillGrid3X3GapFill } from "react-icons/bs";
-import { useDispatch } from "react-redux";
-
-import {
-  priceHighToLow,
-  priceLowToHigh,
-} from "../../../store/slices/categoriesSlice";
 import "./productsheader.css";
 
-const ProductsHeader = ({ gridFour, handleGrid }) => {
-  const dispatch = useDispatch();
-
-  const handlePriceChange = (e) => {
+const ProductsHeader = ({
+  isGrid,
+  handleGrid,
+  priceHighToLow,
+  priceLowToHigh,
+}) => {
+  const handleArrange = (e) => {
     e.target.value === "htl"
-      ? dispatch(priceHighToLow())
+      ? priceHighToLow()
       : e.target.value === "lth"
-      ? dispatch(priceLowToHigh())
+      ? priceLowToHigh()
       : null;
   };
 
@@ -24,16 +21,16 @@ const ProductsHeader = ({ gridFour, handleGrid }) => {
         <div>
           <BsFillGrid3X3GapFill
             onClick={() => handleGrid(true)}
-            className={gridFour ? "active" : ""}
+            className={isGrid ? "active" : ""}
           />
           <BsJustify
             onClick={() => handleGrid(false)}
-            className={!gridFour ? "active" : ""}
+            className={!isGrid ? "active" : ""}
           />
         </div>
 
         <div>
-          <select defaultValue={"DEFAULT"} onChange={handlePriceChange}>
+          <select defaultValue={"DEFAULT"} onChange={handleArrange}>
             <option value="DEFAULT" disabled>
               Arrange By Price
             </option>
