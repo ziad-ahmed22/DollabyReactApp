@@ -29,7 +29,7 @@ export const productApi = createApi({
 
     // Get Single Products
     getProduct: builder.query({
-      query: (id) => `/produxcts/${id}`,
+      query: (id) => `/products/${id}`,
       transformResponse: (response) => {
         const priceAfterDiscount = priceDiscount(
           response.price,
