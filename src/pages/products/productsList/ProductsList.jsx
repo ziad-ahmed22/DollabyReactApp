@@ -1,37 +1,58 @@
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-import { fetchAllCategories } from "../../../store/slices/categoriesSlice";
+import { useGetCatProductsQuery } from "../../../store/apis/productApi";
 import ProductCard from "../../../components/productCard/ProductCard";
+import ProductsHeader from "../productHeader/ProductsHeader";
 import Loading from "../../../components/loading/Loading";
-import { useMyStore } from "../../../hooks/useMyStore";
 import Error from "../../../components/error/Error";
 import "./productsList.css";
 
-const ProductsList = ({ gridFour }) => {
-  const dispatch = useDispatch();
-  const { categories } = useMyStore();
+const ProductsList = ({ category }) => {
+  const [isGrid, setIsGrid] = useState(true);
+  const handleGrid = (status) => setIsGrid(status);
+
+  const { data, isError, error, isLoading } = useGetCatProductsQuery(category);
+  const [finalData, setFinalData] = useState([]);
 
   useEffect(() => {
-    dispatch(fetchAllCategories());
-  }, [dispatch]);
+    setFinalData(data);
+  }, [data]);
+
+  const priceLowToHigh = () => {
+    const sortedData = [...finalData];
+    sortedData.sort((x, y) => x.priceAfterDiscount - y.priceAfterDiscount);
+    setFinalData(sortedData);
+  };
+
+  const priceHighToLow = () => {
+    const sortedData = [...finalData];
+    sortedData.sort((x, y) => y.priceAfterDiscount - x.priceAfterDiscount);
+    setFinalData(sortedData);
+  };
 
   return (
-    <div className="products-list">
-      {categories.loading && <Loading />}
+    <>
+      <ProductsHeader
+        isGrid={isGrid}
+        handleGrid={handleGrid}
+        priceHighToLow={priceHighToLow}
+        priceLowToHigh={priceLowToHigh}
+      />
 
-      {categories.error && !categories.loading && (
-        <Error msg={categories.error} />
-      )}
+      <div className="products-list">
+        {isLoading && <Loading />}
 
-      {!categories.error && !categories.loading && (
-        <div className={gridFour ? "product-grid-4" : "product-grid-1"}>
-          {categories.data.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
-    </div>
+        {isError && <Error error={error} />}
+
+        {finalData && (
+          <div className={isGrid ? "grid" : "no-grid"}>
+            {finalData.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

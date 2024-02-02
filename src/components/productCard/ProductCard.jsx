@@ -3,10 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 
-import {
-  fetchModalProduct,
-  openPreview,
-} from "../../store/slices/previewSlice";
+import { openPreview } from "../../store/slices/previewSlice";
 import { formatPrice } from "./../../utils/formatCurrency";
 import StarsRating from "../starsRating/StarsRating";
 import AddToCart from "../addToCart/AddToCart";
@@ -15,11 +12,6 @@ import "./productCard.css";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
-
-  const previewHandler = () => {
-    dispatch(fetchModalProduct(product.id));
-    dispatch(openPreview());
-  };
 
   return (
     <div className="card-p bg-white position-relative shadow overflow-hidden">
@@ -58,7 +50,7 @@ const ProductCard = ({ product }) => {
           data-tooltip-content="Preview"
           data-tooltip-place="left"
         >
-          <BsEyeFill onClick={previewHandler} />
+          <BsEyeFill onClick={() => dispatch(openPreview(product.id))} />
         </a>
 
         <Link

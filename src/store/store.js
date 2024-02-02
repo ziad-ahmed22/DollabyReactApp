@@ -1,23 +1,23 @@
+import { setupListeners } from "@reduxjs/toolkit/query";
 import { configureStore } from "@reduxjs/toolkit";
 
-import AllProductSliceReducer from "./slices/AllProductSlice";
-import categoriesReducer from "./slices/categoriesSlice";
 import FavouriteReducer from "./slices/FavouriteSlice";
-import catItemsReducer from "./slices/catItemsSlice";
 import previewReducer from "./slices/previewSlice";
-import productReducer from "./slices/productSlice";
 import cartReducer from "./slices/cartSlice";
 import auth from "./slices/auth";
 
+import { productApi } from "./apis/productApi";
+
 export const store = configureStore({
   reducer: {
-    allProducts: AllProductSliceReducer,
-    categories: categoriesReducer,
-    catItems: catItemsReducer,
-    product: productReducer,
-    cart: cartReducer,
-    preview: previewReducer,
-    fav: FavouriteReducer,
     auth: auth,
+    cart: cartReducer,
+    fav: FavouriteReducer,
+    preview: previewReducer,
+    [productApi.reducerPath]: productApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(productApi.middleware),
 });
+
+setupListeners(store.dispatch);
