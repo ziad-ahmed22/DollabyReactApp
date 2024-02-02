@@ -12,8 +12,6 @@ const Details = () => {
   const { id } = useParams();
   const { data, isError, error, isLoading } = useGetProductQuery(id);
 
-  console.log(error);
-
   useEffect(() => scrollToTop(), []);
 
   if (isLoading) return <Loading />;
